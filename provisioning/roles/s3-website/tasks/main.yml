@@ -1,0 +1,12 @@
+---
+- hosts: pi
+
+  tasks:
+    - name: Upload website
+      s3:
+        - bucket: webcampaign
+        - region: eu-west-1
+        - src: {{ item }}
+      with_items:
+        - index.html
+        - stylesheet.css

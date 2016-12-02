@@ -1,0 +1,44 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <script type='text/javascript' src='//code.jquery.com/jquery-2.0.2.js'></script>
+        <script type="text/javascript">
+            (function worker() {
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "https://kx5c2hqk5g.execute-api.eu-west-1.amazonaws.com/prod/webcampaign-2",
+                    success: function(d) {
+                        //$('#loading').html('<img src="' + d.imageUrl + '"/>');
+                        $('#webcam').attr('src', d.imageUrl);
+                    },
+                    complete: function() {
+                        setTimeout(worker, 5000);
+                    }
+                });
+            })();
+        </script>
+        <!-- <script type="text/javascript">
+           (function refresh() {
+               $('#webcam').attr('src', '/images/latest.jpeg?cacheBust=' + Math.random());
+               setTimeout(refresh, 5000);
+           })();
+        </script> -->
+    </head>
+
+    <body>
+        <div class="lr-header">
+            <a href="http://webcampaign.s3-website-eu-west-1.amazonaws.com/index.html/" target="_blank" title="#webcampaign">
+                <img src="lr-logo-email.gif" alt="LateRooms.com" width="200" height="53" border="0" />
+            </a>
+        </div>
+        <div>
+          <span id="webcampaign">#webcampaign</span>
+        </div>
+        <div>
+            <img id="webcam" width=800 height=600 src="https://myaccount.laterooms.com/images/laterooms/404.png" />
+        </diV>
+    </body>
+
+</html>

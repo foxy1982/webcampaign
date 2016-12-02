@@ -1,0 +1,20 @@
+@import url("http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext");
+
+body {
+	background-color: #fff;
+	text-align: center;
+	font-family: Lato, Helvetica;
+}
+
+.lr-header {
+	width: 100%;
+	background-color: #411485;
+	display: block;
+	margin: auto;
+}
+
+#webcampaign {
+	padding-top: 20px;
+	padding-bottom: 15px;
+	display: block;
+}

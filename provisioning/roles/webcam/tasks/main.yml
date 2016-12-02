@@ -1,0 +1,26 @@
+---
+- hosts: pi
+
+  tasks:
+    - name: Install motion and friends
+      apt: pkg={{ item }}
+      with_items:
+      - motion
+      - ffmpeg
+      - uvcdynctrl
+
+    - name: Install motion config
+      copy: src=motion.conf
+      dest: /etc/motion/motion.conf
+      notify:
+        - restart motion
+
+    - name: Disable autofocus
+      command: uvcdynctrl -d video0 -s "Focus, Auto" 0
+
+    - name: Set manual focal length
+      command: uvcdynctrl -d video0 -s "Focus (absolute)" 0
+
+  handlers:
+    - name: restart motion
+      service: name=motion state=restarted
